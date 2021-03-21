@@ -4,7 +4,6 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.java.yintao.order.domain.entity.OrderEntity;
 import com.java.yintao.order.mapper.OrderMapper;
 import com.java.yintao.order.service.OrderService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -16,8 +15,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class OrderServiceImpl extends ServiceImpl<OrderMapper,OrderEntity> implements OrderService  {
 
-//    @Autowired
-//    OrderMapper orderMapper;
 
     @Override
     public int insert(OrderEntity orderEntity) {
