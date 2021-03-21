@@ -1,5 +1,7 @@
 package com.java.yintao.order;
 
+import com.alibaba.fastjson.JSON;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.java.yintao.order.domain.entity.OrderEntity;
 import com.java.yintao.order.mapper.OrderMapper;
 import com.java.yintao.order.service.OrderService;
@@ -22,7 +24,7 @@ class YintaoOrderApplicationTests {
     @Test
     public void insertTest(){
         long start = System.currentTimeMillis();
-        for (int i = 0; i < 10000; i++) {
+        for (int i = 0; i < 20; i++) {
             OrderEntity orderEntity = new OrderEntity();
             Long orderId = System.currentTimeMillis()+i;
             orderEntity.setOrderId(orderId);
@@ -37,6 +39,17 @@ class YintaoOrderApplicationTests {
         }
         long cost = System.currentTimeMillis() -start;
         System.out.println("COST:"+ cost);
+    }
+
+    @Test
+    public void queryPage(){
+        OrderEntity orderEntity = new OrderEntity();
+        orderEntity.setUserPin("yintao");
+        Page<OrderEntity> page =new Page<>();
+        page.setSize(10);
+        page.setCurrent(13);
+        Page<OrderEntity> orderEntityPage = orderService.queryOrderPage(page, orderEntity);
+        System.out.println(JSON.toJSONString(orderEntityPage));
     }
 
 }

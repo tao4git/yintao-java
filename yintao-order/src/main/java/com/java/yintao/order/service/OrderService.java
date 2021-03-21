@@ -1,5 +1,6 @@
 package com.java.yintao.order.service;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.java.yintao.order.domain.entity.OrderEntity;
 
 /**
@@ -11,4 +12,6 @@ import com.java.yintao.order.domain.entity.OrderEntity;
 public interface OrderService {
 
     int insert(OrderEntity orderEntity);
+
+    Page<OrderEntity> queryOrderPage(Page<OrderEntity> page,OrderEntity orderEntity);
 }
