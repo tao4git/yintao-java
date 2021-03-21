@@ -20,18 +20,23 @@ class YintaoOrderApplicationTests {
     OrderService orderService;
 
     @Test
-    public void queryInfoTest(){
-        OrderEntity orderEntity = new OrderEntity();
-        Long orderId = System.currentTimeMillis();
-        orderEntity.setOrderId(orderId);
-//        orderEntity.setParentOrderId(orderId);
-//        orderEntity.setUserName("test");
-//        orderEntity.setUserPhone("16619887367");
-//        orderEntity.setUserPin("yintao");
-//        orderEntity.setOrderTotalAmount(new BigDecimal("10.21"));
-//        orderEntity.setOrderAmount(new BigDecimal("10.21"));
-//        orderEntity.setOrderDiscount(new BigDecimal("0"));
-        orderService.insert(orderEntity);
+    public void insertTest(){
+        long start = System.currentTimeMillis();
+        for (int i = 0; i < 10000; i++) {
+            OrderEntity orderEntity = new OrderEntity();
+            Long orderId = System.currentTimeMillis()+i;
+            orderEntity.setOrderId(orderId);
+            orderEntity.setParentOrderId(orderId);
+            orderEntity.setUserName("test");
+            orderEntity.setUserPhone("16619887367");
+            orderEntity.setUserPin("yintao");
+            orderEntity.setOrderTotalAmount(new BigDecimal("10.21"));
+            orderEntity.setOrderAmount(new BigDecimal("10.21"));
+            orderEntity.setOrderDiscount(new BigDecimal("0"));
+            orderService.insert(orderEntity);
+        }
+        long cost = System.currentTimeMillis() -start;
+        System.out.println("COST:"+ cost);
     }
 
 }

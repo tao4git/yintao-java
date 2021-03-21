@@ -18,6 +18,7 @@ import java.util.Date;
 @Data
 public class OrderEntity {
 
+    @TableId(type = IdType.NONE)
     private Long id;
 
     private Long orderId;
@@ -36,11 +37,11 @@ public class OrderEntity {
 
     private Date orderTime;
 
-    private Float orderTotalAmount;
+    private BigDecimal orderTotalAmount;
 
-    private Float orderAmount;
+    private BigDecimal orderAmount;
 
-    private Float orderDiscount;
+    private BigDecimal orderDiscount;
 
     private int payStatus;
 
