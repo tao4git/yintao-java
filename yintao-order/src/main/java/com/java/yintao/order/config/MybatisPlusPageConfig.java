@@ -7,13 +7,12 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import java.util.Properties;
 
 /**
  * @author yintao
  * @desc mybatis-plus 分页配置
  * @package com.java.yintao.order.config
- * @date 2021/3/2123:16
+ * @date 2021/3/21 23:16
  */
 @Configuration
 @MapperScan("com.java.yintao.order.mapper.*Mapper")

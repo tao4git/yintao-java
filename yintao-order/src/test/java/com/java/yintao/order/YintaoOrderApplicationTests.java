@@ -21,6 +21,9 @@ class YintaoOrderApplicationTests {
     @Autowired
     OrderService orderService;
 
+    /**
+     * 本地测试，1秒1000条插入成功，可持续
+     */
     @Test
     public void insertTest(){
         long start = System.currentTimeMillis();
