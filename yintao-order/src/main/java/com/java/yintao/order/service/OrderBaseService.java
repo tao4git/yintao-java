@@ -9,9 +9,13 @@ import com.java.yintao.order.domain.entity.OrderEntity;
  * @package com.java.yintao.order.service
  * @date 2021/3/2122:23
  */
-public interface OrderService {
+public interface OrderBaseService {
 
-    int insert(OrderEntity orderEntity);
+    Integer insert(OrderEntity orderEntity);
 
-    Page<OrderEntity> queryOrderPage(Page<OrderEntity> page,OrderEntity orderEntity);
+    Integer updateOrderStatus(OrderEntity orderEntity);
+
+    OrderEntity queryOrderInfoByPin(String userPin,Long orderId);
+
+    Page<OrderEntity> queryOrderPageByPin(Page<OrderEntity> page,String userPin);
 }

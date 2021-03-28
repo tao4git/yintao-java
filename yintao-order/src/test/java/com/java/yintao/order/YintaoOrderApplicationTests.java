@@ -3,8 +3,7 @@ package com.java.yintao.order;
 import com.alibaba.fastjson.JSON;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.java.yintao.order.domain.entity.OrderEntity;
-import com.java.yintao.order.mapper.OrderMapper;
-import com.java.yintao.order.service.OrderService;
+import com.java.yintao.order.service.OrderBaseService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -19,7 +18,7 @@ class YintaoOrderApplicationTests {
     }
 
     @Autowired
-    OrderService orderService;
+    OrderBaseService orderBaseService;
 
     /**
      * 本地测试，1秒1000条插入成功，可持续
@@ -38,7 +37,7 @@ class YintaoOrderApplicationTests {
             orderEntity.setOrderTotalAmount(new BigDecimal("10.21"));
             orderEntity.setOrderAmount(new BigDecimal("10.21"));
             orderEntity.setOrderDiscount(new BigDecimal("0"));
-            orderService.insert(orderEntity);
+            orderBaseService.insert(orderEntity);
         }
         long cost = System.currentTimeMillis() -start;
         System.out.println("COST:"+ cost);
@@ -51,7 +50,7 @@ class YintaoOrderApplicationTests {
         Page<OrderEntity> page =new Page<>();
         page.setSize(10);
         page.setCurrent(13);
-        Page<OrderEntity> orderEntityPage = orderService.queryOrderPage(page, orderEntity);
+        Page<OrderEntity> orderEntityPage = orderBaseService.queryOrderPageByPin(page, "yintao");
         System.out.println(JSON.toJSONString(orderEntityPage));
     }
 
