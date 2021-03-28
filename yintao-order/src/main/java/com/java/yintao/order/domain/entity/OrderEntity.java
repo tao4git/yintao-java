@@ -27,15 +27,19 @@ public class OrderEntity {
 
     private String userPin;
 
-    private String userName;
-
     private String userPhone;
 
-    private String userAddress;
+    private String skuNo;
+
+    private String skuName;
+
+    private Integer skuNum;
 
     private Integer orderStatus;
 
-    private Date orderTime;
+    private String orderType;
+
+    private Integer orderAppointType;
 
     private BigDecimal orderTotalAmount;
 
@@ -43,15 +47,11 @@ public class OrderEntity {
 
     private BigDecimal orderDiscount;
 
-    private int payStatus;
-
     private Date payTime;
 
     private Integer payWay;
 
-    private int orderType;
-
-    private int yn;
+    private Integer yn;
 
     private Date createTime;
 

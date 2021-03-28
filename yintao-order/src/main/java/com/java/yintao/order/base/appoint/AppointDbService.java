@@ -1,5 +1,6 @@
 package com.java.yintao.order.base.appoint;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -23,10 +24,9 @@ public class AppointDbService extends ServiceImpl<AppointMapper, AppointEntity>{
 
     public Integer updateAppointStatus(AppointEntity appointEntity) {
         UpdateWrapper<AppointEntity> updateWrapper = new UpdateWrapper<>();
-        updateWrapper.eq("user_pin", appointEntity.getUserPin());
-        updateWrapper.eq("jd_appointment_id", appointEntity.getOrderId());
-        updateWrapper.set("order_status", appointEntity.getOrderStatus());
-        updateWrapper.set("appoint_status", appointEntity.getAppointStatus());
+        LambdaQueryWrapper<AppointEntity> wrapper = new QueryWrapper<AppointEntity>().lambda();
+        wrapper.eq(AppointEntity::getUserPin, appointEntity.getUserPin());
+        wrapper.eq(AppointEntity::getJdAppointmentId,appointEntity.getJdAppointmentId());
         return baseMapper.update(appointEntity, updateWrapper);
     }
 

@@ -95,9 +95,10 @@ public class OrderTest {
         orderEntity.setOrderAmount(new BigDecimal("12.11"));
         orderEntity.setOrderStatus(1);
         orderEntity.setUserPhone("16619887367");
-        orderEntity.setUserName("银涛");
-        orderEntity.setUserAddress("北京市大兴区旧宫镇12号");
         orderEntity.setPayWay(1);
+        orderEntity.setSkuNo("123456");
+        orderEntity.setSkuName("测试商品");
+        orderEntity.setSkuNum(1);
         orderEntity.setPayTime(new Date());
         return orderEntity;
     }

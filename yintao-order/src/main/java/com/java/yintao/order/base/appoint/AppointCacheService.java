@@ -48,6 +48,19 @@ public class AppointCacheService {
         }
     }
 
+    public void saveAppointCache(AppointEntity appointEntity, Boolean result){
+        if(result) {
+            redisUtil.set(buildAppointKey(appointEntity), appointEntity,TIMEOUT, TimeUnit.DAYS);
+        }
+        //获取开关配置，是否写ES
+        if(esFlag){
+            System.out.println("数据同步写入es");
+            appointEsService.saveAppointToEs(appointEntity);
+            //发送补偿落库mq
+            System.out.println("发送补偿MQ");
+        }
+    }
+
     public void delOrderCache(AppointEntity appointEntity,Integer result){
         if(result > 0) {
             redisUtil.del(buildAppointKey(appointEntity));

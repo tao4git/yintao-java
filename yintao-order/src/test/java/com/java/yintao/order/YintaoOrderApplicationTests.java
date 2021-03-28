@@ -31,7 +31,6 @@ class YintaoOrderApplicationTests {
             Long orderId = System.currentTimeMillis()+i;
             orderEntity.setOrderId(orderId);
             orderEntity.setParentOrderId(orderId);
-            orderEntity.setUserName("test");
             orderEntity.setUserPhone("16619887367");
             orderEntity.setUserPin("yintao");
             orderEntity.setOrderTotalAmount(new BigDecimal("10.21"));

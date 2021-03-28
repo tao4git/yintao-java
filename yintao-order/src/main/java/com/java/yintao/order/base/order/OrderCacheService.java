@@ -50,6 +50,19 @@ public class OrderCacheService {
         }
     }
 
+    public void saveOrderCache(OrderEntity orderEntity,Boolean switchFlag){
+        if(switchFlag) {
+            redisUtil.set(buildOrderKey(orderEntity), orderEntity,TIMEOUT, TimeUnit.DAYS);
+        }
+        //获取开关配置，是否写ES
+        if(esFlag){
+            System.out.println("数据同步写入es");
+            orderEsService.saveOrderToEs(orderEntity);
+            //发送补偿落库mq
+            System.out.println("发送补偿MQ");
+        }
+    }
+
     public void delOrderCache(OrderEntity orderEntity,Integer result){
         if(result > 0) {
             redisUtil.del(buildOrderKey(orderEntity));

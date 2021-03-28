@@ -1,5 +1,6 @@
 package com.java.yintao.order.service.impl;
 
+import cn.hutool.core.collection.CollectionUtil;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.java.yintao.order.base.appoint.AppointCacheService;
 import com.java.yintao.order.base.appoint.AppointDbService;
@@ -10,7 +11,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import org.springframework.util.CollectionUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,6 +51,14 @@ public class AppointBaseServiceImpl implements AppointBaseService {
         }
         appointCacheService.saveAppointCache(orderEntity,result);
         return result;
+    }
+
+    @Override
+    public Integer insertAppointList(List<AppointEntity> appointEntityList) {
+        for (int i = 0; i < appointEntityList.size(); i++) {
+            insert(appointEntityList.get(i));
+        }
+        return appointEntityList.size();
     }
 
     @Override
@@ -95,7 +103,7 @@ public class AppointBaseServiceImpl implements AppointBaseService {
         }
         List<AppointEntity> orderEntities = appointCacheService.queryAppointPageCache(page, userPin);
         //TODO es降级开关，直接查库,否则ES返回空，会继续走库查询
-        if(CollectionUtils.isEmpty(orderEntities)){
+        if(CollectionUtil.isNotEmpty(orderEntities)){
             page.setRecords(new ArrayList<>());
             return page;
         }

@@ -43,15 +43,15 @@ public class AppointEntity {
 
     private String skuName;
 
-    private String skuAmount;
+    private BigDecimal skuAmount;
     /**
      * 门店结算价格
      */
-    private BigDecimal storePayPrice;
+    private BigDecimal storePayAmount;
 
     private String userName;
 
-    private String userPhone;
+    private String userAppointPhone;
 
     private Integer idCardType;
 
@@ -77,8 +77,9 @@ public class AppointEntity {
 
     private Date writeOffTime;
 
-    private Date exprieTime;
+    private Date expireTime;
 
+    private String userOrderPhone;
     /**
      * 是否升级套餐
      */
@@ -88,7 +89,7 @@ public class AppointEntity {
 
     private Long userId;
 
-    private int yn;
+    private Integer yn;
 
     private Date createTime;
 

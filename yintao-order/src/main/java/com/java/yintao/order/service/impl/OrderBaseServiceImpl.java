@@ -47,7 +47,7 @@ public class OrderBaseServiceImpl implements OrderBaseService {
             if(esFlag){
                 result = 1;
             }
-            log.error("OrderServiceImpl insert order excepiton....");
+            log.error("OrderServiceImpl insert order excepiton....",e);
         }
         orderCacheService.saveOrderCache(orderEntity,result);
         return result;
